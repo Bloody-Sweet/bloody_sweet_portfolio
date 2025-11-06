@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef, lazy, Suspense } from 'react';
-import { WELCOME_MESSAGE, DESCRIPTION, FIRST_CARD_DESCRIPTION } from '../constants/Content';
+import { WELCOME_MESSAGE, FIRST_CARD_DESCRIPTION } from '../constants/Content';
 const About = lazy(() => import('./About'));
 const Projects = lazy(() => import('./Projects'));
 const Experience = lazy(() => import('./Experience'));

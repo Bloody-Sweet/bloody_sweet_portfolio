@@ -6,29 +6,21 @@ const Experience = () => {
   const sectionRef = useRef(null);
 
   useEffect(() => {
+    const el = sectionRef.current;
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             setShowExperience(true);
-            if (sectionRef.current) {
-              observer.unobserve(sectionRef.current);
-            }
+            observer.unobserve(entry.target);
           }
         });
       },
       { threshold: 0.25 }
     );
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
-      }
-    };
+    if (el) observer.observe(el);
+    return () => observer.disconnect();
   }, []);
 
   return (
